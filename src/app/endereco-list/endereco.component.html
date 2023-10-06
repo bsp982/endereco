@@ -1,9 +1,7 @@
-<div>
-
-  <div class="cep-input">
-    <form name="myForm">
-      <input class="input"
-        [(ngModel)]="cep">
-    </form>
-  </div>
+<div class="cep-input">
+  <form name="myForm">
+    <input class="input"
+           [ngModel]="cep"
+           (ngModelChange)="onCepChange($event)">
+  </form>
 </div>

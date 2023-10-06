@@ -1,4 +1,5 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
+import {EnderecoService} from "../services/endereco.service";
 
 @Component({
   selector: 'endereco-component',
@@ -6,23 +7,20 @@ import {Component, Input} from '@angular/core';
   styleUrls: ['./endereco.component.sass'],
 })
 export class EnderecoComponent {
-  @Input()
+
   cep: string = '';
 
+  private ederecoService: EnderecoService;
 
-  // pegarImagemPokemon() {
-  //   const numeroFormatado = this.leadingZero(this.numero);
-  //
-  //   return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${numeroFormatado}.png`;
-  // }
-  //
-  // leadingZero(str: string | number, size = 3): string {
-  //   let s = String(str);
-  //
-  //   while (s.length < (size || 2)) {
-  //     s = '0' + s;
-  //   }
-  //
-  //   return s;
-  // }
+  constructor(ederecoService: EnderecoService) {
+    this.ederecoService = ederecoService;
+  }
+
+  onCepChange(event: string) {
+    if (event) {
+      this.ederecoService.buscaEndereco(event).then(result => {
+        console.log(result);
+      })
+    }
+  }
 }

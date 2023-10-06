@@ -15,7 +15,6 @@ export class EnderecoService {
     const requisicao = await this.httpClient
       .get<any>('https://brasilapi.com.br/api/cep/v1/{cep}')
       .toPromise();
-
     this.enderecos = requisicao.results;
   }
 }
